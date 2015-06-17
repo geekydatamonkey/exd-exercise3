@@ -5,6 +5,7 @@
 let p5 = require('p5');
 let $ = require('jquery');
 let Turtle = require('./turtleDraw');
+let paths = require('./turtlePaths');
 
 let config = {
   canvasWrapper: '.canvas-wrapper'
@@ -12,47 +13,6 @@ let config = {
 
 let topTurtle; 
 let bottomTurtle;
-let topPath = [
-  [-1000, 0],
-  [0, 0],
-  [5, 0],
-  [5, 1.5],
-  [6, 1.5],
-  [6, 0],
-  [7, 0],
-  [7, 4],
-  [8, 4],
-  [8, 0],
-  [9, 0],
-  [9, 4],
-  [13, 4],
-  [13, 1.5],
-  [11, 1.5],
-  [11, 1],
-  [14, 1],
-  [1000, 1]
-];
-
-let bottomPath = [
-  [1000, 0], // offscreen
-  [10, 0],
-  [10, 2.5],
-  [12, 2.5],
-  [12, 3],
-  [10, 3],
-  [10, 4],
-  [6, 4],
-  [6, 2.5],
-  [5, 2.5],
-  [5, 4],
-  [4, 4],
-  [4, 1],
-  [3, 1],
-  [3, 4],
-  [2, 4],
-  [2, 1],
-  [-1000, 1]
-];
 
 function mySketch(s){
 
@@ -68,25 +28,24 @@ function mySketch(s){
 
 
     // line color
-
     s.stroke(0);
+    s.frameRate(40);
 
 
     // setup Turtles for Drawing
-    topTurtle = new Turtle(0,0,40);
-    bottomTurtle = new Turtle(14,1,40);
+    topTurtle = new Turtle(paths.top);
+    topTurtle.setColor('red')
+      .setSketch(s);
 
-    let turtles = [topTurtle, bottomTurtle];
+    bottomTurtle = new Turtle(paths.bottom);
+    bottomTurtle.setColor('blue')
+      .setSketch(s);
     
-    turtles.forEach( function(turtle) {
-      turtle.setSketch(s); 
-    });
-
-    topTurtle.draw(topPath);
-    bottomTurtle.draw(bottomPath);
   };
 
   s.draw = function() {
+    topTurtle.update();
+    bottomTurtle.update();
   };
 
   s.windowResized = function() {

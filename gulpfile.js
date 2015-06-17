@@ -33,7 +33,7 @@ gulp.task('styles', function () {
       require('autoprefixer-core')({browsers: ['last 1 version']})
     ]))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'));
+    .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
 

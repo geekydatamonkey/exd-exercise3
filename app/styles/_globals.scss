@@ -52,12 +52,12 @@ a {
 
 .canvas-wrapper {
   border: #eee solid 0.125em;
-  min-height: 100%;
-  min-width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -10;
+  min-height: 300px;
+  min-width: 700px;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // z-index: -10;
 }
 
 h1, h2, h3, h4, h5 {
