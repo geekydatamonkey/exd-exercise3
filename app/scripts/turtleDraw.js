@@ -238,7 +238,7 @@ class Turtle {
 
 
     // random chance to draw and arrow from currentPosition to edge
-    if (this.sketch.random() < 0.5) {
+    if (this.sketch.random() < 0.005) {
 
       // if no target, create a random arrow
       if (! this.target) {
@@ -255,12 +255,12 @@ class Turtle {
     // dy
     if (dx === 0) {
       nextPosition.x = this.currentPosition.x;
-      nextPosition.y = this.currentPosition.y + 0.1 * Math.sign(dy);
+      nextPosition.y = this.currentPosition.y + 0.01 * Math.sign(dy);
     }
 
     // if dy == 0, line is horz
     if (dy === 0) {
-      nextPosition.x = this.currentPosition.x + 0.1 * Math.sign(dx);
+      nextPosition.x = this.currentPosition.x + 0.01 * Math.sign(dx);
       nextPosition.y = this.currentPosition.y;
     }
 
